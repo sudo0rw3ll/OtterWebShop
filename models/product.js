@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ProductCategory, Comment, Cart, CartItem, OrderItem}) {
       this.belongsTo(ProductCategory, {foreign_key: "ProductCategoryId"});
-      this.hasMany(Comment, {foreignKey: "product_id"});
-      this.hasMany(CartItem, {foreignKey: "cart_product_id"});
-      this.hasMany(OrderItem, {foreignKey: "order_product_id"});
+      this.hasMany(Comment, {foreignKey: "product_id", onDelete:'CASCADE', hooks:true});
+      this.hasMany(CartItem, {foreignKey: "cart_product_id", onDelete:'CASCADE', hooks:true});
+      this.hasMany(OrderItem, {foreignKey: "order_product_id", onDelete:'CASCADE', hooks:true});
     }
   }
   Product.init({

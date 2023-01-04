@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({Country, City}) {
       this.belongsTo(Country, {foreignKey: "country_id"});
-      this.hasMany(City, {foreignKey: "region_id"});
+      this.hasMany(City, {foreignKey: "region_id", onDelete:'CASCADE', hooks:true});
     }
   }
   Region.init({

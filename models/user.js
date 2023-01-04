@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate({Role, Comment, Cart, Transaction, Order, Location}) {
       this.belongsTo(Role, {foreignKey: "role_id"});
       this.belongsTo(Location, {foreignKey: "location_id"});
-      this.hasMany(Cart, {foreignKey: "user_cart_id"});
-      this.hasMany(Comment, {foreignKey: "user_id"});
-      this.hasMany(Order, {foreignKey: "user_order_id"});
-      this.hasMany(Transaction, {foreignKey: "transaction_user_id"});
+      this.hasMany(Cart, {foreignKey: "user_cart_id", onDelete:'CASCADE', hooks:true});
+      this.hasMany(Comment, {foreignKey: "user_id", onDelete:'CASCADE', hooks:true});
+      this.hasMany(Order, {foreignKey: "user_order_id", onDelete:'CASCADE', hooks:true});
+      this.hasMany(Transaction, {foreignKey: "transaction_user_id", onDelete:'CASCADE', hooks:true});
     }
   }
   User.init({

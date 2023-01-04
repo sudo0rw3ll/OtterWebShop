@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({City, Region}) {
-      this.hasMany(City, {foreignKey: "country_id"});
-      this.hasMany(Region, {foreignKey: "country_id"});
+      this.hasMany(City, {foreignKey: "country_id", onDelete:'CASCADE', hooks:true});
+      this.hasMany(Region, {foreignKey: "country_id", onDelete:'CASCADE', hooks:true});
     }
   }
   Country.init({

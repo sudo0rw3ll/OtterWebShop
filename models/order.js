@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({OrderItem, User, Transaction}) {
-      this.hasMany(OrderItem, {foreignKey: "order_id"});
+      this.hasMany(OrderItem, {foreignKey: "order_id", onDelete:'CASCADE', hooks:true});
       this.belongsTo(User, {foreignKey: "user_order_id"});
-      this.hasMany(Transaction, {foreignKey: "order_payment_id"});
+      this.hasMany(Transaction, {foreignKey: "order_payment_id", onDelete:'CASCADE', hooks:true});
     }
   }
   Order.init({
